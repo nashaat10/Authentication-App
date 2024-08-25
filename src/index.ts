@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import errorMiddleware from './middleware/error.middleware';
-import config from '../config';
+import config from './config';
 import db from './database';
 
 const app = express();
