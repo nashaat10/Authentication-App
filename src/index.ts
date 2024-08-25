@@ -13,6 +13,7 @@ app.use(morgan('dev'));
 // Helmet helps you secure your Express apps by setting various HTTP headers.
 app.use(helmet());
 
+// rate limit is used to limit the number of requests to the server
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -23,7 +24,6 @@ app.use(
   }),
 );
 
-app.use(errorMiddleware);
 app.get('/', (req: Request, res: Response) => {
   res.json({
     message: 'Hello from Auth-Module',
@@ -36,6 +36,7 @@ app.post('/', (req: Request, res: Response) => {
     data: req.body,
   });
 });
+app.use(errorMiddleware);
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
