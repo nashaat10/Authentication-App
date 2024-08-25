@@ -1,0 +1,33 @@
+{
+  "name": "Auth-Module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nashaat10/Auth-Module.git",
+  "author": "nashaat10 <94199891+nashaat10@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "test": "npm run build && jasmine"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/supertest": "^6.0.2",
+    "eslint": "^9.9.0",
+    "jasmine": "^5.2.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@types/jasmine": "^5.1.4",
+    "@types/morgan": "^1.9.9",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0"
+  }
+}
