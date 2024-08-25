@@ -3,16 +3,15 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import errorMiddleware from './middleware/error.middleware';
+import config from '../config';
 
 const app = express();
-const PORT = 3000;
+const PORT = config.port || 3000;
+
 app.use(express.json());
-
 app.use(morgan('dev'));
-
 // Helmet helps you secure your Express apps by setting various HTTP headers.
 app.use(helmet());
-
 // rate limit is used to limit the number of requests to the server
 app.use(
   rateLimit({
