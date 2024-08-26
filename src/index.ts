@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import errorMiddleware from './middleware/error.middleware';
 import config from './config';
+import routes from './routes';
 import db from './database';
 
 const app = express();
@@ -23,19 +24,14 @@ app.use(
     message: 'Too many requests, please try again after 15 min.',
   }),
 );
+app.use('/api', routes);
 
 app.get('/', (req: Request, res: Response) => {
   res.json({
-    message: 'Hello from Auth-Module',
+    message: 'Hello World',
   });
 });
 
-app.post('/', (req: Request, res: Response) => {
-  res.json({
-    message: 'Hello from Auth-Module',
-    data: req.body,
-  });
-});
 // test db
 // db.connect().then((client) => {
 //   return client
