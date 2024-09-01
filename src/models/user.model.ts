@@ -97,6 +97,33 @@ class UserModel {
   }
 
   //authenticate user
-}
+  async authenticate(email: string, password: string): Promise<User | null> {
+    try {
+      const connection = await db.connect();
+      const sql = `SELECT * FROM users WHERE email = $1`;
+      const result = await connection.query(sql, [email]);
+      if (result.rows.length) {
+        // check if password is valid
+        const { password: hashPassword } = result.rows[0];
+        const isPasswordValid = bcrypt.compareSync(
+          `${password}${config.pepper}`,
+          hashPassword,
+        );
+        if (isPasswordValid) {
+          // return user info
+          const userInfo = await connection.query(
+            'SELECT id,email,user_name,first_name,last_name FROM users WHERE email = $1',
+            [email],
+          );
+          return userInfo.rows[0];
+        }
+      }
 
+      connection.release();
+      return null;
+    } catch (error) {
+      throw new Error(`Unable to login: ${(error as Error).message}`);
+    }
+  }
+}
 export default UserModel;
