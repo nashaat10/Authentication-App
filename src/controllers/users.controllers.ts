@@ -109,9 +109,9 @@ export const authenticate = async (
     res.json({
       status: 'success',
       message: 'user authenticated successfully',
-      token,
       data: {
         user,
+        token,
       },
     });
   } catch (error) {
