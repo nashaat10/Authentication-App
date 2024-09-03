@@ -1,5 +1,5 @@
 # Description #
-Authentication app that allows the user to login and sign up and verify that if the user is logged in 
+Authentication app that allows the user to login and sign up and verify that if the user is logged in using typeScript and PostgreSQL
 
 
 # Features #
