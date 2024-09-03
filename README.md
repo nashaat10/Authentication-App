@@ -1,5 +1,5 @@
 # Description #
-Authentication app that allows the user to login and sign up and verify that if the user is logged in using Node.js , typeScript and PostgreSQL
+Authentication app that allows the user to login and sign up and verify that if the user is logged in using Node.js, Express, typeScript and PostgreSQL
 
 
 # Features #
