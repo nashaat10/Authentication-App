@@ -17,23 +17,25 @@ const validateTokenMiddleware = (
 ) => {
   try {
     const authHeader = req.get('Authorization');
-    console.log(authHeader);
+    // console.log(authHeader);
     if (authHeader) {
       const bearer = authHeader.split(' ')[0].toLowerCase();
       const token = authHeader.split(' ')[1];
       if (token && bearer === 'bearer') {
-        jwt.verify(
+        const decoded = jwt.verify(
           token,
           config.tokenSecret as unknown as string,
-          (err, decoded) => {
-            if (err) {
-              handelUnAuthorized(next);
-            } else {
-              next();
-            }
-          },
         );
+        if (decoded) {
+          next();
+        } else {
+          handelUnAuthorized(next);
+        }
+      } else {
+        handelUnAuthorized(next);
       }
+    } else {
+      handelUnAuthorized(next);
     }
   } catch (error) {
     handelUnAuthorized(next);
