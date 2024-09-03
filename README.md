@@ -15,8 +15,8 @@ Authentication app that allows the user to login and sign up and verify that if 
 # APIs # 
 Auth:
 ~~~
-/api/v1/users/signup [POST]
-/api/v1/users/login [POST]
+/api/v1/users/[POST]
+/api/v1/users/authenticate [POST]
 ~~~
 
 Users:
