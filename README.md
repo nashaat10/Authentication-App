@@ -4,7 +4,7 @@ Authentication app that allows the user to login and sign up and verify that if 
 
 # Features #
 
-1. protected routes, authentication, authorization, security, and more. 
+1. protected routes, authentication, authorization, security, and more.  
 2. MVC architecture
 3. RESTful API
 4. CRUD operations
